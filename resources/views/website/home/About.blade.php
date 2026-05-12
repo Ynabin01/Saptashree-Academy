@@ -1,368 +1,254 @@
-<!-- Google Font -->
+<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
   rel="stylesheet">
 
-<!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<script>
-  AOS.init({
-    once: true,
-    duration: 1200
-  });
-</script>
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-  :root {
-    --primary-blue: #003b8e;
-    --primary-green: #0b9b46;
-    --light-green: #16c060;
-    --dark: #111827;
-    --gray: #6b7280;
-    --white: #ffffff;
-  }
-
   * {
     font-family: 'Manrope', sans-serif;
   }
 
-  #unique-container {
+  :root {
+    --blue: #3553a4;
+    --light-blue: #5ea8ff;
+    --white: #ffffff;
+  }
+
+  /* MAIN SECTION */
+  .about-modern-section {
+    background: #3553a4;
+    padding: 90px 70px;
     position: relative;
-    padding: 90px 0;
     overflow: hidden;
   }
 
-  /* Background Blur */
-  #unique-container::before {
+  /* RIGHT TOP GRADIENT */
+  .about-modern-section::after {
     content: "";
     position: absolute;
-    width: 450px;
-    height: 450px;
-    background: rgba(11, 155, 70, 0.08);
-    border-radius: 50%;
     top: -120px;
-    left: -100px;
-    filter: blur(40px);
+    right: -120px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle,
+        rgba(255, 0, 128, 0.35),
+        transparent 70%);
+    z-index: 1;
   }
 
-  #unique-container::after {
-    content: "";
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    background: rgba(0, 59, 142, 0.08);
-    border-radius: 50%;
-    bottom: -120px;
-    right: -100px;
-    filter: blur(40px);
-  }
-
-  /* Main Box */
-  .advanced-section {
+  /* LEFT IMAGE AREA */
+  .about-image-wrapper {
     position: relative;
     z-index: 2;
+  }
+
+  .about-main-image {
+    width: 100%;
+    border-radius: 18px;
+    height: 430px;
+    object-fit: cover;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  /* FLOATING CARD */
+  .connect-card {
+    position: absolute;
+    left: 30px;
+    bottom: -35px;
     background: #fff;
-    border-radius: 35px;
-    overflow: hidden;
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, 0.06),
-      0 10px 25px rgba(0, 59, 142, 0.04);
+    width: 78%;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   }
 
-  /* Left Side */
-  .image-side {
-    position: relative;
-    background:
-      linear-gradient(rgba(0, 59, 142, 0.82),
-        rgba(11, 155, 70, 0.82)),
-      url('{!! htmlspecialchars_decode($about->banner_image ?? '') !!}');
-    background-size: cover;
-    background-position: center;
-    min-height: 100%;
-    padding: 80px 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Floating Glass Card */
-  .glass-card {
-    backdrop-filter: blur(14px);
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 35px;
-    border-radius: 30px;
-    text-align: center;
-    max-width: 420px;
-    width: 100%;
-    animation: floatCard 4s ease-in-out infinite;
-  }
-
-  @keyframes floatCard {
-    0% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-12px);
-    }
-
-    100% {
-      transform: translateY(0px);
-    }
-  }
-
-  .glass-card img {
-    width: 100%;
-    max-width: 320px;
-    border-radius: 22px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  }
-
-  /* Right Side */
-  .content-side {
-    padding: 80px 60px;
-  }
-
-  /* Badge */
-  .top-badge {
-    display: inline-block;
-    padding: 10px 22px;
-    border-radius: 50px;
-    background: rgba(11, 155, 70, 0.08);
-    color: var(--primary-green);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 25px;
-  }
-
-  /* Title */
-  .advanced-title {
-    font-size: 3.2rem;
-    line-height: 1.1;
+  .connect-card h4 {
+    color: #0b9b46;
+    font-size: 1.4rem;
     font-weight: 800;
-    color: var(--dark);
-    margin-bottom: 25px;
+    margin-bottom: 10px;
   }
 
-  .advanced-title span {
-    color: var(--primary-blue);
-    position: relative;
-  }
-
-  /* Description */
-  .advanced-description {
-    font-size: 1.05rem;
-    line-height: 1.9;
-    color: var(--gray);
-    margin-bottom: 20px;
-  }
-
-  .text-dark {
-    line-height: 1.9;
-    color: #2d3748 !important;
-  }
-
-  /* Feature Cards */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 35px;
-    margin-bottom: 40px;
-  }
-
-  .feature-box {
-    background: #f8fbff;
-    border-radius: 20px;
-    padding: 22px;
-    transition: .4s ease;
-    border: 1px solid rgba(0, 59, 142, 0.05);
-  }
-
-  .feature-box:hover {
-    transform: translateY(-8px);
-    background: linear-gradient(135deg,
-        var(--primary-blue),
-        var(--primary-green));
-  }
-
-  .feature-box:hover h5,
-  .feature-box:hover p {
-    color: white;
-  }
-
-  .feature-box h5 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 8px;
-    transition: .4s;
-  }
-
-  .feature-box p {
-    color: #667085;
+  .connect-card p {
     margin: 0;
+    color: #8a8a8a;
     font-size: .95rem;
-    transition: .4s;
   }
 
-  /* Button */
-  .btn-advance {
+  /* CONTENT */
+  .about-content {
     position: relative;
-    overflow: hidden;
-    border: none;
-    padding: 16px 36px;
-    border-radius: 60px;
-    background: linear-gradient(90deg,
-        var(--primary-blue),
-        var(--primary-green));
+    z-index: 2;
+    padding-left: 50px;
+  }
+
+  .about-title {
     color: white;
-    font-weight: 700;
-    text-decoration: none;
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 22px;
+  }
+
+  .about-description {
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.9;
+    font-size: 1.05rem;
+    margin-bottom: 45px;
+    max-width: 580px;
+  }
+
+  /* BUTTON */
+  .about-btn {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    background: linear-gradient(90deg, #2f7cff, #6db7ff);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 14px;
+    font-weight: 700;
     transition: .4s ease;
-    box-shadow: 0 18px 30px rgba(0, 59, 142, 0.14);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
   }
 
-  .btn-advance:hover {
+  .about-btn:hover {
     transform: translateY(-5px);
     color: white;
-    box-shadow: 0 22px 40px rgba(0, 59, 142, 0.22);
   }
 
-  .btn-advance span {
-    transition: .4s ease;
+  .about-btn span {
+    transition: .4s;
   }
 
-  .btn-advance:hover span {
-    transform: translateX(6px);
+  .about-btn:hover span {
+    transform: translateX(5px);
   }
 
-  /* Responsive */
+  /* RESPONSIVE */
   @media(max-width:991px) {
 
-    .content-side {
-      padding: 50px 30px;
+    .about-modern-section {
+      padding: 60px 25px 90px;
+    }
+
+    .about-content {
+      padding-left: 0;
+      margin-top: 80px;
       text-align: center;
     }
 
-    .advanced-title {
-      font-size: 2.4rem;
+    .about-title {
+      font-size: 2.3rem;
     }
 
-    .feature-grid {
-      grid-template-columns: 1fr;
+    .about-description {
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .image-side {
-      padding: 50px 25px;
+    .connect-card {
+      width: 85%;
+      left: 50%;
+      transform: translateX(-50%);
     }
-
   }
 
   @media(max-width:576px) {
 
-    #unique-container {
-      padding: 50px 0;
+    .about-modern-section {
+      padding: 50px 18px 80px;
     }
 
-    .advanced-title {
-      font-size: 2rem;
+    .about-main-image {
+      height: 300px;
     }
 
-    .advanced-description,
-    .text-dark {
-      font-size: .96rem;
+    .about-title {
+      font-size: 1.9rem;
     }
 
-    .btn-advance {
+    .about-description {
+      font-size: .95rem;
+    }
+
+    .connect-card {
+      padding: 20px;
+      bottom: -50px;
+    }
+
+    .connect-card h4 {
+      font-size: 1.1rem;
+    }
+
+    .connect-card p {
+      font-size: .85rem;
+    }
+
+    .about-btn {
       width: 100%;
-      justify-content: center;
     }
-
   }
 </style>
 
-<div id="unique-container" class="container">
+<!-- SECTION -->
+<section class="about-modern-section">
 
-  <div class="advanced-section row g-0 align-items-center">
+  <div class="container">
 
-    <!-- LEFT SIDE -->
-    <div class="col-lg-5" data-aos="zoom-in">
+    <div class="row align-items-center g-5">
 
-      <div class="image-side">
+      <!-- LEFT IMAGE -->
+      <div class="col-lg-6">
 
-        <div class="glass-card">
+        <div class="about-image-wrapper">
 
-          <img src="{!! htmlspecialchars_decode($about->banner_image ?? '') !!}" alt="About Banner">
+          <img src="{!! htmlspecialchars_decode($about->banner_image ?? '') !!}"
+            alt="About Image"
+            class="about-main-image">
+
+          <!-- FLOATING CARD -->
+          <div class="connect-card">
+
+            <h4>Connect with Us</h4>
+
+            <p>
+              we'll never leave your questions unanswered.
+            </p>
+
+          </div>
 
         </div>
 
       </div>
 
-    </div>
+      <!-- RIGHT CONTENT -->
+      <div class="col-lg-6">
 
-    <!-- RIGHT SIDE -->
-    <div class="col-lg-7" data-aos="fade-left">
+        <div class="about-content">
 
-      <div class="content-side">
+          <h2 class="about-title">
+            About Us
+          </h2>
 
-        <!-- Badge -->
-        <div class="top-badge">
-          SAPTA SHRI ACADEMY
-        </div>
+          <p class="about-description">
 
-        <!-- Title -->
-        <h2 class="advanced-title">
-          {!! htmlspecialchars_decode($about->caption ?? '') !!}
-        </h2>
+            {!! htmlspecialchars_decode($about->short_content ?? '') !!}
 
-        <!-- Description -->
-        <p class="advanced-description">
-          {!! htmlspecialchars_decode($about->short_content ?? '') !!}
-        </p>
+          </p>
 
-        <p class="text-dark mb-4">
-          {!! htmlspecialchars_decode($about->long_content ?? '') !!}
-        </p>
+          <a href="/about-one/about-us-two" class="about-btn">
 
-        <!-- Feature Cards -->
-        <div class="feature-grid">
+            Explore More
 
-          <div class="feature-box">
-            <h5>Modern Education</h5>
-            <p>Creative learning system for future growth.</p>
-          </div>
+            <span>→</span>
 
-          <div class="feature-box">
-            <h5>Expert Teachers</h5>
-            <p>Dedicated and experienced faculty members.</p>
-          </div>
-
-          <div class="feature-box">
-            <h5>Smart Environment</h5>
-            <p>Technology focused learning atmosphere.</p>
-          </div>
-
-          <div class="feature-box">
-            <h5>Student Support</h5>
-            <p>Helping students achieve academic success.</p>
-          </div>
+          </a>
 
         </div>
-
-        <!-- Button -->
-        <a href="/about-one/about-us-two" class="btn btn-advance">
-
-          Explore More
-          <span>➜</span>
-
-        </a>
 
       </div>
 
@@ -370,4 +256,4 @@
 
   </div>
 
-</div>
+</section>
