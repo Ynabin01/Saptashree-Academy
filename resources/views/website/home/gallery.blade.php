@@ -1,159 +1,266 @@
-<?php
-use App\Models\NavigationItems;
-?>
-<div class="gallery-container" style="margin-bottom: 40px;">
-     
-     <div class="col-12 mb-5" data-aos="fade-up" data-aos-duration="1200">
-                <h2 class="mv-section-title">
-                     <span class="mission">  </span>
-                    <span class="vision">Gallery</span>
-                    <span class="values">  </span>
-                </h2>
-            </div> 
+<div class="gallery-modern">
 
-    <div class="gallery-grid">
-        @foreach ($photos->childs->sortByDesc('updated_at') as $photo)
-            @if ($loop->iteration < 5)
-                <?php
-                $images = NavigationItems::query()->where('navigation_id', $photo->id)->latest()->get();
-                        ?>
-                <div class="gallery-card">
-                    <a href="{{ route('GOTOGALLERY', $photo->nav_name) }}">
-                        <div class="image-wrapper">
-                            <!-- Transparent Red Ribbon -->
-                            <div class="corner-ribbon"></div>
+    <!-- BACKGROUND LINES (KEEP THIS STYLE YOU LIKED) -->
+    <div class="bg-lines"></div>
 
-                            <img src="{{ $photo->banner_image }}" alt="{{$photo->caption}}">
-                            <div class="overlay">
-                                <div class="overlay-content">
-                                    <h3>{{$photo->caption}}</h3>
-                                    <p>{{count($images)}} Pictures •
-                                        {{ \Carbon\Carbon::parse($photo->updated_at)->format('M d, Y') }}</p>
-                                </div>
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="gallery-head text-center mb-5"
+             data-aos="fade-up">
+
+            <div class="tag">GALLERY</div>
+
+            <h2>
+                Captured <span>Moments</span>
+            </h2>
+
+            <p>
+                A modern collection of memories and visual stories.
+            </p>
+
+        </div>
+
+        <!-- GRID -->
+        <div class="gallery-grid-modern">
+
+            @foreach ($photos->childs->sortByDesc('updated_at') as $photo)
+
+                @if ($loop->iteration < 5)
+
+                    <?php
+                        $images = App\Models\NavigationItems::where('navigation_id', $photo->id)
+                            ->latest()->get();
+                    ?>
+
+                    <a href="{{ route('GOTOGALLERY', $photo->nav_name) }}"
+                       class="gallery-card-modern"
+                       data-aos="zoom-in">
+
+                        <!-- IMAGE -->
+                        <div class="img-box">
+
+                            <img src="{{ $photo->banner_image }}"
+                                 alt="{{ $photo->caption }}">
+
+                            <div class="overlay"></div>
+
+                            <div class="count">
+                                {{ count($images) }} photos
                             </div>
-                        </div> 
+
+                        </div>
+
+                        <!-- TEXT -->
+                        <div class="content">
+
+                            <h3>{{ $photo->caption }}</h3>
+
+                            <div class="meta">
+                                {{ \Carbon\Carbon::parse($photo->updated_at)->format('M d, Y') }}
+                            </div>
+
+                        </div>
+
                     </a>
-                </div>
-            @endif
-        @endforeach
+
+                @endif
+
+            @endforeach
+
+        </div>
+
     </div>
+
 </div>
 
 <style>
-    /* GRID LAYOUT */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        max-width: 1000px;
-        margin: auto;
-        padding: 10px;
+
+/* =========================
+BACKGROUND (KEEP + IMPROVED)
+========================= */
+
+.gallery-modern{
+    position:relative;
+    padding:90px 0;
+    background:#0b1220;
+    overflow:hidden;
+}
+
+/* ALBUM STYLE LINES (YOUR FAVORITE PART) */
+.bg-lines{
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.05) 1px,
+            transparent 1px,
+            transparent 140px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.03) 0px,
+            rgba(255,255,255,0.03) 1px,
+            transparent 1px,
+            transparent 100px
+        );
+    opacity:.25;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.gallery-head{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+    margin:auto;
+}
+
+.tag{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.06);
+    color:#7dd3fc;
+    font-size:.75rem;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.gallery-head h2{
+    font-size:2.5rem;
+    font-weight:800;
+    color:#fff;
+}
+
+.gallery-head h2 span{
+    color:#38bdf8;
+}
+
+.gallery-head p{
+    color:rgba(255,255,255,0.6);
+    margin-top:10px;
+}
+
+/* =========================
+GRID
+========================= */
+
+.gallery-grid-modern{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+CARD (MODERN CLEAN STYLE)
+========================= */
+
+.gallery-card-modern{
+    display:block;
+    text-decoration:none;
+    border-radius:18px;
+    overflow:hidden;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:.35s ease;
+    backdrop-filter:blur(10px);
+}
+
+.gallery-card-modern:hover{
+    transform:translateY(-8px);
+    border-color:rgba(56,189,248,0.35);
+}
+
+/* IMAGE */
+
+.img-box{
+    position:relative;
+    height:210px;
+    overflow:hidden;
+}
+
+.img-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:1s ease;
+}
+
+.gallery-card-modern:hover img{
+    transform:scale(1.08);
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.2));
+}
+
+/* COUNT BADGE */
+
+.count{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:rgba(0,0,0,0.4);
+    color:#fff;
+    font-size:.72rem;
+    padding:5px 10px;
+    border-radius:999px;
+    backdrop-filter:blur(10px);
+}
+
+/* CONTENT */
+
+.content{
+    padding:14px 16px;
+}
+
+.content h3{
+    font-size:1.05rem;
+    color:#fff;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+.meta{
+    font-size:.8rem;
+    color:rgba(255,255,255,0.6);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .gallery-head h2{
+        font-size:2rem;
     }
 
-    /* CARD */
-    .gallery-card {
-        perspective: 1000px;
+    .img-box{
+        height:180px;
     }
 
-    .image-wrapper {
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: transform 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+}
+
+@media(max-width:480px){
+
+    .gallery-grid-modern{
+        grid-template-columns:1fr;
     }
 
-    /* SQUARE IMAGE WITH SMALLER HEIGHT */
-    .image-wrapper img {
-        width: 100%;
-        height: 160px;
-        /* reduced height */
-        object-fit: cover;
-        display: block;
-        transition: transform 0.5s ease, filter 0.5s ease;
-    }
+}
 
-    /* HOVER EFFECT */
-    .image-wrapper:hover {
-        transform: scale(1.03);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-        background-color: rgba(255, 0, 0, 0.05);
-        /* subtle red highlight */
-    }
-
-    /* TRANSPARENT RED CORNER */
-    .corner-ribbon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 80px;
-        height: 80px;
-        background: rgba(255, 0, 0, 0.3);
-        /* semi-transparent red */
-        clip-path: polygon(0 0, 100% 0, 0 100%);
-        z-index: 2;
-        transform: scale(0.9);
-        transition: transform 0.4s ease, background 0.4s ease;
-    }
-
-    .image-wrapper:hover .corner-ribbon {
-        transform: scale(1.1) rotate(-10deg);
-        background: rgba(255, 0, 0, 0.5);
-    }
-
-    /* OVERLAY INFO */
-    .overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 60%);
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        opacity: 0;
-        transition: transform 0.5s ease, opacity 0.5s ease;
-        transform: translateY(20%);
-    }
-
-    .image-wrapper:hover .overlay {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .overlay-content {
-        color: #fff;
-        /* fully white caption */
-        text-align: center;
-        padding: 12px;
-    }
-
-    .overlay-content h3 {
-        margin: 0;
-        font-size: 16px;
-        font-weight: 700;
-        color: #fff;
-        /* ensure caption is white */
-    }
-
-    .overlay-content p {
-        font-size: 13px;
-        opacity: 0.9;
-        margin-top: 4px;
-        color: #fff;
-        /* ensure details text is white */
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-        .image-wrapper img {
-            height: 160px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .image-wrapper img {
-            height: 140px;
-        }
-    }
 </style>
