@@ -2,14 +2,21 @@
 @section('content')
 
 <!-- Page Header -->
-<div class="container-xxl page-header" style="background-image: url('/website/img/bcumb.jpg'); background-size: cover; background-position: center bottom; height: 280px; position: relative;">
-    <div class="container h-100 d-flex flex-column justify-content-end pb-4">
-        <div class="bread-container text-white d-flex align-items-center gap-2">
-            <div>Home</div>
-            <div>/</div>
-            <div>{{$slug1->caption ?? $slug1}}</div>
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-box">
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb-line">
+                <a href="/">Home</a>
+                <span>/</span>
+                <span>{{ $slug1->caption ?? $slug1 }}</span>
+            </div>
+            <!-- TITLE -->
+            <h1 class="hero-title">
+                {{ $slug2->caption ?? $slug2 }}
+            </h1>
         </div>
-        <h1 class="text-white mt-2" style="font-weight: 700;">{{$slug2->caption ?? $slug2}}</h1>
     </div>
 </div>
 
@@ -87,9 +94,10 @@
                 @endforeach
             </div>
         </div>
-
+ 
     </div>
 </div>
+<br><br>
 @endif
 
 <style>
@@ -160,7 +168,7 @@
 }
 .overlay-link {
     color: #fff;
-    background-color: #CF1312;
+    background-color: #152146;
     padding: 0.5rem 1rem;
     border-radius: 25px;
     font-size: 0.85rem;

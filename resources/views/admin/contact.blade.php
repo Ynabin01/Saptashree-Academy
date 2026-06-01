@@ -1,190 +1,300 @@
 @extends("layouts.master")
 
 @section('content')
-    <!-- breadcrumb start -->
-    <style>
-        body {
-            background-color: white;
-        }
-    </style>
 
-    <!-- Include Animate.css & Wow.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
+<!-- =========================
+MODERN HERO
+========================= -->
 
-    <div class="container-xxl bg-primary page-header wow animate__fadeIn" style="background-image: url('/website/img/bcumb.jpg'); 
-                    background-size: cover; 
-                    background-position: center bottom;  
-                    height: 250px;">
-        <div class="container nichha">
-            <div class="bread-container bread-auto wow animate__fadeInDown" data-wow-delay="0.2s">
-                <div>Home</div>
-                <div class="divider"> / </div>
-                <div>Contact</div>
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-box">
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb-line">
+                <a href="/">Home</a>
+                <span>/</span>
+                <span>Contact</span>
             </div>
-            <div class="b-title wow animate__fadeInUp" data-wow-delay="0.4s">Contact</div>
+            <!-- TITLE -->
+            <h1 class="hero-title">
+                Contact Us
+            </h1>
         </div>
     </div>
+</div>
 
-    <!-- Contact Start -->
-    <div class="container-xxl py-6" style="width: 90%;">
-        <div class="container">
-            <div class="contact-section"><br><br>
-                <div class="responsive-container" style="margin-top: -25px;">
-                    <h2 class="mv-section-title animated-heading">
-                        <span class="mission">Let’s Get</span>
-                        <span class="vision"> In </span>
-                        <span class="values">Touch</span>
-                    </h2>
-                </div>
-                <div class="contact-row">
+<!-- =========================
+MODERN CONTACT GRID
+========================= -->
 
-                    <div class="contact-item wow animate__fadeInUp" data-wow-delay="0.3s">
-                        <div
-                            style="width: 100%; height: 100%; padding: 16px; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div
-                                style="background-color: rgba(207, 19, 18, 0.24); color: red; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                                <i class="fas fa-map-marker-alt" style="font-size: 24px;"></i>
-                            </div>
-                            <div
-                                style="text-align: center; color: #212529; font-size: 18px; font-family: Montserrat; font-weight: 600; line-height: 23.40px; word-wrap: break-word; margin-top: 10px;">
-                                Address
-                            </div>
-                            <div
-                                style="text-align: center; color: #3D3D3D; font-size: 16px; font-family: Poppins; font-weight: 400; line-height: 24px; word-wrap: break-word; margin-top: 5px;">
-                                {{ $global_setting->website_full_address }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item wow animate__fadeInUp" data-wow-delay="0.5s">
-                        <div
-                            style="width: 100%; height: 100%; padding: 16px; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div
-                                style="background-color: rgba(207, 19, 18, 0.24); color: red; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                                <i class="fas fa-phone-alt" style="font-size: 24px;"></i>
-                            </div>
-                            <div
-                                style="text-align: center; color: #212529; font-size: 18px; font-family: Montserrat; font-weight: 600; line-height: 23.40px; word-wrap: break-word; margin-top: 10px;">
-                                Phone Number
-                            </div>
-                            <div
-                                style="text-align: center; color: #3D3D3D; font-size: 16px; font-family: Poppins; font-weight: 400; line-height: 24px; word-wrap: break-word; margin-top: 5px;">
-                                {{ $global_setting->phone }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item wow animate__fadeInUp" data-wow-delay="0.7s">
-                        <div
-                            style="width: 100%; height: 100%; padding: 16px; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                            <div
-                                style="background-color: rgba(207, 19, 18, 0.24); color: red; width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                                <i class="far fa-envelope" style="font-size: 24px;"></i>
-                            </div>
-                            <div
-                                style="text-align: center; color: #212529; font-size: 18px; font-family: Montserrat; font-weight: 600; line-height: 23.40px; word-wrap: break-word; margin-top: 10px;">
-                                Email Address
-                            </div>
-                            <div
-                                style="text-align: center; color: #3D3D3D; font-size: 16px; font-family: Poppins; font-weight: 400; line-height: 20.80px; word-wrap: break-word; margin-top: 5px;">
-                                {{ $global_setting->site_email }}
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="x-contact">
 
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 wow animate__fadeInUp" data-wow-delay="0.3s">
-                <form role="form" action="{{ route('contactstore') }}" method="post" id="contact-form"
-                    enctype='multipart/form-data'>
-                    @csrf
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="form-floating wow animate__fadeInLeft" data-wow-delay="0.4s">
-                                <input type="text" class="form-control" name="first_name" id="name" placeholder="Your Name">
-                                <label for="name">Your Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating wow animate__fadeInRight" data-wow-delay="0.5s">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
-                                <label for="email">Your Email</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating wow animate__fadeInUp" data-wow-delay="0.6s">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
-                                <label for="subject">Subject</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating wow animate__fadeInUp" data-wow-delay="0.7s">
-                                <textarea class="form-control" placeholder="Leave a message here" name="message"
-                                    id="message" style="height: 150px"></textarea>
-                                <label for="message">Message</label>
-                            </div>
-                        </div>
-                        <div class="col-12 d-flex justify-content-end wow animate__fadeInUp" data-wow-delay="0.8s">
-                            <button class="btn btn-primary py-2 px-4" type="submit">Send Message</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <br><br>
-    </div>
-<iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44668.46432989629!2d85.28493276485202!3d27.70903024219139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e1!3m2!1sen!2snp!4v1755687932394!5m2!1sen!2snp"
-                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <!-- Contact End -->
-@endsection
 
+        <div class="x-grid">
+
+            <!-- LEFT INFO PANEL -->
+            <div class="x-info">
+
+                <div class="x-card">
+
+                    <div class="x-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+
+                    <div>
+                        <h4>Office Address</h4>
+                        <p>{{ $global_setting->website_full_address }}</p>
+                    </div>
+
+                </div>
+
+                <div class="x-card">
+
+                    <div class="x-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+
+                    <div>
+                        <h4>Phone</h4>
+                        <p>{{ $global_setting->phone }}</p>
+                    </div>
+
+                </div>
+
+                <div class="x-card">
+
+                    <div class="x-icon">
+                        <i class="far fa-envelope"></i>
+                    </div>
+
+                    <div>
+                        <h4>Email</h4>
+                        <p>{{ $global_setting->site_email }}</p>
+                    </div>
+
+                </div>
+
+                <div class="x-note">
+                    We are available Sunday – Friday, 9AM to 6PM
+                </div>
+
+            </div>
+
+            <!-- RIGHT FORM PANEL -->
+            <div class="x-form">
+
+                <h2>Send Message</h2>
+
+                <form action="{{ route('contactstore') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="x-row">
+
+                        <input type="text" name="first_name" placeholder="Full Name">
+
+                        <input type="email" name="email" placeholder="Email Address">
+
+                    </div>
+
+                    <input type="text" name="subject" placeholder="Subject">
+
+                    <textarea name="message" placeholder="Write your message..."></textarea>
+
+                    <button type="submit">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+MAP
+========================= -->
+
+<section class="x-map">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.7537180684208!2d87.68190137543066!3d26.656366776800954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e58f83e5b05c25%3A0x17df51262106fc70!2sSaptashree%20Academy!5e0!3m2!1sen!2snp!4v1778857420410!5m2!1sen!2snp"
+        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+</section>
+
+<!-- =========================
+STYLE (MODERN 2026 UI)
+========================= -->
 
 <style>
-    /* Multi-color text */
-    .mv-section-title span.mission {
-        color: #0830cb;
-        /* Red */
-        animation: floatColors 3s infinite alternate;
+/* GLOBAL */
+body {
+    background: #f8fafc;
+    font-family: system-ui, -apple-system, Segoe UI;
+    color: #0f172a;
+}
+
+/* HERO */
+.x-hero {
+    padding: 90px 0 60px;
+}
+
+.x-breadcrumb {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.x-breadcrumb a {
+    color: #0f172a;
+    text-decoration: none;
+}
+
+.x-title {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.x-sub {
+    color: #64748b;
+    margin-top: 10px;
+    max-width: 600px;
+}
+
+/* GRID */
+.x-contact {
+    padding: 40px 0 80px;
+}
+
+.x-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+}
+
+/* LEFT INFO */
+.x-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.x-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.x-card:hover {
+    transform: translateY(-4px);
+}
+
+.x-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #4f46e5;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NOTE */
+.x-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* FORM */
+.x-form {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.x-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.x-form input,
+.x-form textarea {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.x-form input:focus,
+.x-form textarea:focus {
+    border-color: #4f46e5;
+}
+
+.x-form textarea {
+    height: 140px;
+    resize: none;
+}
+
+.x-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.x-form button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #4f46e5;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.x-form button:hover {
+    background: #3730a3;
+}
+
+/* MAP */
+.x-map iframe {
+    width: 100%;
+    height: 320px;
+    border: 0;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px) {
+    .x-grid {
+        grid-template-columns: 1fr;
     }
 
-    .mv-section-title span.vision {
-        color: #00BFFF;
-        /* Blue */
-        animation: floatColors 3s infinite alternate 0.3s;
+    .x-title {
+        font-size: 34px;
     }
-
-    .mv-section-title span.values {
-        color: #32CD32;
-        /* Green */
-        animation: floatColors 3s infinite alternate 0.6s;
-    }
-
-    /* Floating/scale animation */
-    @keyframes floatColors {
-        0% {
-            transform: translateY(0px) scale(1);
-            text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-        }
-
-        50% {
-            transform: translateY(-10px) scale(1.05);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        100% {
-            transform: translateY(0px) scale(1);
-            text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-        }
-    }
+}
 </style>
+
+@endsection

@@ -66,12 +66,12 @@
                                     <!-- <th>Country</th> -->
                                     <!-- <th>Cv</th> -->
                                     <th>Message</th>
-                                    <th>Country</th>
+                                    <!-- <th>Country</th>
                                     <th>Faculty</th>
                                     <th>Phone Number</th>
                                     <th>Education Level</th>
                                     <th>Have You Done</th>
-                                     <th>Score</th> 
+                                     <th>Score</th>  -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,7 +89,7 @@
                                     <td>{{$contact->subject ?? ''}}</td> 
                                     <td>{{$contact->email ?? ''}}</td>
                                     <td>{{$contact->message ?? ''}}</td>
-                                    <td>{{$contact->country ?? ''}}</td>  
+                                    <!-- <td>{{$contact->country ?? ''}}</td>   -->
                                     {{-- cv --}}
                                     <!-- <td style="display: flex; align-items:center">
                                         @if (isset($contact->cv))
@@ -99,11 +99,11 @@
                                         </a>                                                
                                         @endif
                                     </td> -->
-                                    <td>{{$contact->permanent_address ?? ''}}</td>  
+                                    <!-- <td>{{$contact->permanent_address ?? ''}}</td>  
                                     <td>{{$contact->number ?? ''}}</td>
                                     <td>{{$contact->temporary_address ?? ''}}</td>
                                     <td>{{$contact->cv ?? ''}}</td>  
-                                    <td>{{$contact->file ?? ''}}</td>  
+                                    <td>{{$contact->file ?? ''}}</td>   -->
                                     {{-- photo  --}}
                                     {{-- <td style="display: flex; align-items:center">
                                         @if (isset($contact->photo))

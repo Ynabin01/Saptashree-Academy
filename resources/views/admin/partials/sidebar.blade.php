@@ -42,4 +42,94 @@
     <!-- /.sidebar -->
 </aside>
 
-  
+  <style>
+    /* ===== Modern Sidebar Design ===== */
+
+.main-sidebar{
+    background: linear-gradient(180deg,#1e293b,#0f172a) !important;
+    box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+}
+
+.sidebar{
+    padding-top: 15px;
+}
+
+.user-panel{
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+/* Menu Items */
+.sidebar-menu{
+    padding: 10px;
+}
+
+.sidebar-menu > li{
+    margin-bottom: 8px;
+}
+
+.sidebar-menu > li > a{
+    border-radius: 12px;
+    color: #d1d5db !important;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all .3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Icons */
+.sidebar-menu > li > a i{
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Hover Effect */
+.sidebar-menu > li > a:hover{
+    background: rgba(255,255,255,0.08) !important;
+    color: #ffffff !important;
+    transform: translateX(5px);
+}
+
+/* Active Menu */
+.sidebar-menu > li.active > a{
+    background: linear-gradient(135deg,#3b82f6,#2563eb) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(37,99,235,0.35);
+}
+
+/* Remove AdminLTE default background */
+.skin-blue .sidebar-menu > li.active > a,
+.skin-black .sidebar-menu > li.active > a{
+    border-left: none !important;
+}
+
+/* Smooth Animation */
+.sidebar-menu li a{
+    transition: all .3s ease-in-out;
+}
+
+/* Scrollbar */
+.sidebar::-webkit-scrollbar{
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+/* Sidebar Heading Style */
+.sidebar-menu span{
+    letter-spacing: .3px;
+}
+
+/* Dashboard Special Highlight */
+.sidebar-menu > li:first-child > a{
+    background: rgba(59,130,246,0.12);
+}
+  </style>

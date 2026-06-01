@@ -82,6 +82,8 @@
         @media (max-width: 992px) {
             .custom-gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+                margin-top: 25px;
+                margin-bottom: 25px;
             }
         }
 
@@ -89,10 +91,12 @@
         @media (max-width: 576px) {
             .custom-gallery-grid {
                 grid-template-columns: 1fr;
+                margin-top: 25px !important;
             }
 
             .custom-gallery-card img {
                 height: 200px;
+                 
             }
         }
     </style>
@@ -100,19 +104,24 @@
     <?php
     use App\Models\NavigationItems;
     ?>
-    <div class="container-xxl bg-primary page-header" style="background-image: url('/website/img/bcumb.jpg'); 
-                   background-size: cover; 
-                   background-position: center bottom;
-                   height: 250px;">
-        <div class="container nichha">
-            <div class="bread-container bread-auto">
-                <div>Home</div>
-                <div class="divider"> / </div>
-                <div>{{ $slug1->caption ?? $slug1 }} </div>
+   <!-- HERO -->
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-box">
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb-line">
+                <a href="/">Home</a>
+                <span>/</span>
+                <span>{{ $slug1->caption ?? $slug1 }}</span>
             </div>
-            <div class="b-title">{{ $slug2->caption ?? $slug2 }}</div>
+            <!-- TITLE -->
+            <h1 class="hero-title">
+                {{ $slug2->caption ?? $slug2 }}
+            </h1>
         </div>
     </div>
+</div>
 
     <!-- Gallery Start -->
     <div class="container-xxl py-6">

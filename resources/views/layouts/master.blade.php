@@ -66,54 +66,59 @@ $seo = $job;
 
 <body>
     <!-- Top Bar -->
-    <div class="container-fluid bg-dark text-light py-2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <div class="topbar-area">
         <div class="container">
             <div class="row align-items-center">
 
-                <!-- Left: Email + Phone (Hidden on mobile/tablet) -->
+                <!-- Contact -->
                 <div class="col-lg-6 d-none d-lg-flex align-items-center gap-4">
-                    <span class="d-flex align-items-center small text-light">
-                        <i class="fas fa-envelope me-2 text-warning"></i>
-                        <a href="mailto:{{ $global_setting->site_email }}" class="text-light text-decoration-none">
-                            {{ $global_setting->site_email }}
-                        </a>
-                    </span>
-                    <span class="d-flex align-items-center small text-light">
-                        <i class="fas fa-phone-alt me-2 text-success"></i>
-                        <a href="tel:{{ $global_setting->phone }}" class="text-light text-decoration-none">
-                            {{ $global_setting->phone }}
-                        </a>
-                    </span>
+
+                    <a href="mailto:{{ $global_setting->site_email }}" class="top-contact">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        {{ $global_setting->site_email }}
+                    </a>
+
+                    <a href="tel:{{ $global_setting->phone }}" class="top-contact">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        {{ $global_setting->phone }}
+                    </a>
+
                 </div>
 
-                <!-- Right: Social Icons (Always Visible) -->
-                <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end gap-2 mt-2 mt-lg-0">
-                    <a href="{{ $global_setting->facebook ?? '#' }}" target="_blank"
-                        class="rounded-circle d-flex align-items-center justify-content-center"
-                        style="width: 36px; height: 36px; background:#3b5998; color:white; transition:.3s;">
-                        <i class="fab fa-facebook-f"></i>
+                <!-- Social -->
+                <div class="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end gap-3">
+
+                    <a href="{{ $global_setting->facebook ?? '#' }}" target="_blank" class="social-icon facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
                     </a>
-                    <a href="{{ $global_setting->twitter ?? '#' }}" target="_blank"
-                        style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background:#000; color:white; border-radius: 50%; transition: .3s;">
-                        <i class="fab fa-x"></i>
+
+                    <a href="{{ $global_setting->twitter ?? '#' }}" target="_blank" class="social-icon twitter">
+                        𝕏
                     </a>
-                    <a href="{{ $global_setting->linkedin ?? '#' }}" target="_blank"
-                        class="rounded-circle d-flex align-items-center justify-content-center"
-                        style="width: 36px; height: 36px; background:#e4405f; color:white; transition:.3s;">
-                        <i class="fab fa-instagram"></i>
+
+                    <a href="{{ $global_setting->instagram ?? '#' }}" target="_blank" class="social-icon instagram">
+                        <i class="fa-brands fa-instagram"></i>
                     </a>
+
                 </div>
 
             </div>
         </div>
     </div>
-
     <!--  end .container -->
     <!-- Navbar & Hero Start -->
     <!-- Navbar Start -->
     <div class="container-xxl position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-0 upri-navbar"
-            style="background-color: rgba(18, 62, 207, 1); height: 60px;">
+            style="background-color:#00008B; height: 60px;">
 
             <!-- Logo -->
             <a href="/" class="image-hder navbar-brand d-flex justify-content-center align-items-center p-0"
@@ -645,11 +650,11 @@ MINIMAL PREMIUM FOOTER
                     <h5 class="footer-title">Location</h5>
 
                     <div class="footer-map">
-
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44668.46432989629!2d85.28493276485202!3d27.70903024219139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e1!3m2!1sen!2snp!4v1755687932394!5m2!1sen!2snp"
-                            allowfullscreen="" loading="lazy">
-                        </iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.7537180684208!2d87.68190137543066!3d26.656366776800954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e58f83e5b05c25%3A0x17df51262106fc70!2sSaptashree%20Academy!5e0!3m2!1sen!2snp!4v1778857420410!5m2!1sen!2snp"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 
                     </div>
 
@@ -663,7 +668,8 @@ MINIMAL PREMIUM FOOTER
                 <p>
                     © {{ date('Y') }}
                     {{ $global_setting->site_name ?? 'Your Site' }}.
-                    All Rights Reserved.
+                    All Rights Reserved. Developed by <a href="https://bhasika.com/" target="_blank"
+                        style="color: #7c3aed; text-decoration: none;">BHASIKA</a>.
                 </p>
 
             </div>
